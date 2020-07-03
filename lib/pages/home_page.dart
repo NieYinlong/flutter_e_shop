@@ -15,34 +15,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-//  Widget _bannberWidget = FutureBuilder(
-//    future: getHomeBanner(),
-//    builder: (BuildContext context, AsyncSnapshot snapshot){
-//      switch (snapshot.connectionState) {
-//        case ConnectionState.none:
-//          print('还没有开始网络请求');
-//          return Text('还没有开始网络请求');//, style: TextStyle(fontSize: ScreenUtil().setSp(32)));
-//        case ConnectionState.active:
-//          print('active');
-//          return Text('ConnectionState.active');
-//        case ConnectionState.waiting:
-//          print('waiting');
-//          return Center(
-//            child: CircularProgressIndicator(),
-//          );
-//        case ConnectionState.done:
-//          print('done');
-//          if (snapshot.hasError) return Text('Error: ${snapshot.error}', style: TextStyle(fontSize: ScreenUtil().setSp(32)),);
-//
-//          List banners = snapshot.data;
-//          return SwiperWidget(dataList: banners);
-//        default:
-//          return null;
-//      }
-//    },
-//  );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
