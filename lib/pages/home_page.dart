@@ -5,6 +5,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../config/service_method.dart';
 import 'package:convert/convert.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -38,7 +39,7 @@ class _HomePageState extends State<HomePage> {
       switch (snapshot.connectionState) {
         case ConnectionState.none:
           print('还没有开始网络请求');
-          return Text('还没有开始网络请求');
+          return Text('还没有开始网络请求');//, style: TextStyle(fontSize: ScreenUtil().setSp(32)));
         case ConnectionState.active:
           print('active');
           return Text('ConnectionState.active');
@@ -49,7 +50,7 @@ class _HomePageState extends State<HomePage> {
           );
         case ConnectionState.done:
           print('done');
-          if (snapshot.hasError) return Text('Error: ${snapshot.error}');
+          if (snapshot.hasError) return Text('Error: ${snapshot.error}', style: TextStyle(fontSize: ScreenUtil().setSp(32)),);
           List banners = snapshot.data;
           return SwiperDiy(swiperDataList: banners);
         default:
@@ -60,32 +61,32 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 此处假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
+    ScreenUtil.init(width: 750, height: 1334, allowFontScaling: false);
     print('count = ${count++}');
     return Scaffold(
       appBar: AppBar(title: Text('首页')),
       body: Column(
         children: <Widget>[
           _bannberWidget,
-          Text('data')
+          Text('上面是轮播图', style: TextStyle(fontSize: ScreenUtil().setSp(32)),)
         ],
       ),
     );
   }
 }
 
-
-
-
 // 首页轮播组件
 class SwiperDiy extends StatelessWidget {
 
   final List swiperDataList;
-  SwiperDiy({this.swiperDataList});
+  SwiperDiy({this.swiperDataList}); // 构造函数
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      height: 250,
+      height: ScreenUtil().setHeight(322),
       child: Swiper(
         itemBuilder: (BuildContext context, int index) {
           var model = swiperDataList[index];
