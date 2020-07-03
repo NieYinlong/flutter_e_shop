@@ -3,7 +3,7 @@ import 'dart:async';
 import 'dart:io';
 import 'service_url.dart';
 
- getHomePageContent() async {
+ getHomeBanner() async {
   print('请求地址 ==> : ${servicePath['homeBanner']}');
   try{
     Dio dio = new Dio();
@@ -11,6 +11,23 @@ import 'service_url.dart';
     var formData = {'lon' : '115.09090', 'lat': '29.90909'};
     Response rsp = await dio.get(servicePath['homeBanner']);
 //    print(rsp);
+    if(rsp.statusCode == 200) {
+      return rsp.data;
+    } else {
+      throw Exception('接口异常');
+    }
+
+  } catch(e) {
+
+    return print('NYL_ERROR =======> : $e');
+  }
+}
+
+getHomePageData() async {
+  print('请求地址 ==> : ${servicePath['homeData']}');
+  try{
+    Dio dio = new Dio();
+    Response rsp = await dio.get(servicePath['homeData']);
     if(rsp.statusCode == 200) {
       return rsp.data;
     } else {
