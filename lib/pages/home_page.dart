@@ -1,12 +1,6 @@
-
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../config/service_method.dart';
-import 'package:convert/convert.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
@@ -41,7 +35,7 @@ class _HomePageState extends State<HomePage> {
                 children: <Widget>[
                   SwiperWidget(dataList: data['banners']),
                   NavCategory(categoryList: data['nav_categories'],),
-                  Text('ss')
+                  Text('待开发')
                 ],
               );
             default:

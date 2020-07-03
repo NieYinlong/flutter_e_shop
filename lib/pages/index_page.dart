@@ -51,7 +51,7 @@ class _IndexPageState extends State<IndexPage> {
   @override
   Widget build(BuildContext context) {
 
-    //全局使用屏幕适配
+    //全局初始化屏幕适配
     //设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 此处假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
     ScreenUtil.init(width: 750, height: 1334, allowFontScaling: false);
 
