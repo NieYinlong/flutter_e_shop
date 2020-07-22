@@ -10,10 +10,10 @@ class HomePage extends StatefulWidget {
 }
 
 // with AutomaticKeepAliveClientMixin
-class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
-
-@override
-bool get wantKeepAlive => true;
+class _HomePageState extends State<HomePage>
+    with AutomaticKeepAliveClientMixin {
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   Widget build(BuildContext context) {
@@ -147,34 +147,30 @@ class BannerAd extends StatelessWidget {
   }
 }
 
-class Recommend extends StatelessWidget  {
+class Recommend extends StatelessWidget {
+  
+  Widget _titleView() {
+    return Container(
+      alignment: Alignment.centerLeft,
+      padding: EdgeInsets.fromLTRB(10, 4, 0, 4),
+      decoration: BoxDecoration(
+        // color: Colors.red,
+        border: Border(bottom: BorderSide(width: 0.4, color: Colors.black26)),
+      ),
+      child: Text(
+        '推荐',
+        style: TextStyle(color: Colors.orangeAccent),
+      ),
+    );
+  }
+
   @override
-
-
-Widget _titleView() {
-  return Container(
-    alignment: Alignment.centerLeft,
-    padding: EdgeInsets.fromLTRB(10, 4, 0, 4),
-    decoration: BoxDecoration(
-      // color: Colors.red,
-      border: Border(bottom: BorderSide(width: 0.4, color: Colors.black26)),
-    ),
-    child: Text('推荐', 
-      style: TextStyle(color: Colors.orangeAccent),
-    ),
-  );
-}
-
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         _titleView(),
         Row(
-          children: <Widget>[
-            Text('data1'),
-            Text('data2'),
-            Text('data3')
-          ],
+          children: <Widget>[Text('data1'), Text('data2'), Text('data3')],
         )
       ],
     );
