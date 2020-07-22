@@ -31,7 +31,7 @@ class _IndexPageState extends State<IndexPage> {
     ),
   ];
 
-  final List tabBodies = [
+  final List<Widget> _tabBodies = [
       HomePage(),
       CategoryPage(),
       CartPage(),
@@ -43,7 +43,7 @@ class _IndexPageState extends State<IndexPage> {
 
   @override
   void initState() {
-    _selectedPage = tabBodies[_currentIndex];
+    _selectedPage = _tabBodies[_currentIndex];
     print('当前页 $_selectedPage');
     super.initState();
   }
@@ -53,8 +53,7 @@ class _IndexPageState extends State<IndexPage> {
 
     //全局初始化屏幕适配
     //设置适配尺寸 (填入设计稿中设备的屏幕尺寸) 此处假如设计稿是按iPhone6的尺寸设计的(iPhone6 750*1334)
-    ScreenUtil.init(width: 750, height: 1334, allowFontScaling: false);
-
+    ScreenUtil.init(context, width: 750, height: 1334, allowFontScaling: false);
     return Scaffold(
       backgroundColor: Color(0xfff5f5f5),
       bottomNavigationBar: BottomNavigationBar(
@@ -64,11 +63,15 @@ class _IndexPageState extends State<IndexPage> {
         onTap: (index) {
           setState(() {
             _currentIndex = index;
-            _selectedPage = tabBodies[_currentIndex];
+            _selectedPage = _tabBodies[_currentIndex];
           });
         },
       ),
-      body: _selectedPage,
+      // body: _selectedPage,
+      body: IndexedStack(
+        index: _currentIndex,
+        children: _tabBodies,
+      ),
     );
   }
 }
