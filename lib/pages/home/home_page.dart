@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../config/service_method.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'dart:html';
+import './home_recommend.dart' show Recommend;
 
 class HomePage extends StatefulWidget {
   @override
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                       categoryList: data['nav_categories'],
                     ),
                     BannerAd(),
-                    Recommend(),
+                    Recommend(recommendList: data['recommend']),
                     Text('待开发'),
                     Text(
                       'fhdsqkfdsqhfhshfjkdsahfjkdsahfjkdsahfjkdslahfjkdsahfjkdsahfjkdsahfjkdslahfjkdsahfjkdsahfjkdsahfjkdslahfjkdashfjkdsahfjdksal',
@@ -146,32 +146,3 @@ class BannerAd extends StatelessWidget {
   }
 }
 
-class Recommend extends StatelessWidget {
-  
-  Widget _titleView() {
-    return Container(
-      alignment: Alignment.centerLeft,
-      padding: EdgeInsets.fromLTRB(10, 4, 0, 4),
-      decoration: BoxDecoration(
-        // color: Colors.red,
-        border: Border(bottom: BorderSide(width: 0.4, color: Colors.black26)),
-      ),
-      child: Text(
-        '推荐',
-        style: TextStyle(color: Colors.orangeAccent),
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        _titleView(),
-        Row(
-          children: <Widget>[Text('data1'), Text('data2'), Text('data3')],
-        )
-      ],
-    );
-  }
-}
