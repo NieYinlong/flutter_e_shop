@@ -10,9 +10,8 @@ class Recommend extends StatelessWidget {
 // 推荐标题
   Widget _titleView() {
     return Container(
-      margin: EdgeInsets.only(top: 10),
       alignment: Alignment.centerLeft,
-      padding: EdgeInsets.fromLTRB(10, 4, 0, 4),
+      padding: EdgeInsets.fromLTRB(10, 10, 0, 10),
       decoration: BoxDecoration(
         // color: Colors.red,
         border: Border(bottom: BorderSide(width: 0.4, color: Colors.black26)),
@@ -67,7 +66,7 @@ class Recommend extends StatelessWidget {
 // 横向列表
   Widget _listWidget() {
     return Container(
-      height: ScreenUtil().setHeight(330),
+      height: ScreenUtil().setHeight(280),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: recommendList.length,
