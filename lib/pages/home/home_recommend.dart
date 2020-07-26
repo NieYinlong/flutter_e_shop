@@ -3,12 +3,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Recommend extends StatelessWidget {
   
+  
   final List recommendList;
   // 构造函数
   Recommend({Key key, this.recommendList}) : super(key: key);
 
+  
+
 // 推荐标题
   Widget _titleView() {
+    print('打击哈');
+
     return Container(
       alignment: Alignment.centerLeft,
       padding: EdgeInsets.fromLTRB(10, 10, 0, 10),

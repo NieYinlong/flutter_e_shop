@@ -3,6 +3,7 @@ import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../config/service_method.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './home_recommend.dart' show Recommend;
+import './home_goodsList.dart' show HotSaleGoodsList;
 
 class HomePage extends StatefulWidget {
   @override
@@ -52,14 +53,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
                     ),
                     BannerAd(),
                     Recommend(recommendList: data['recommend']),
+                    HotSaleGoodsList(),
                     Text('待开发'),
-                    Text(
-                      'fhdsqkfdsqhfhshfjkdsahfjkdsahfjkdsahfjkdslahfjkdsahfjkdsahfjkdsahfjkdslahfjkdsahfjkdsahfjkdsahfjkdslahfjkdashfjkdsahfjdksal',
-                      style: TextStyle(
-                          color: Colors.red,
-                          fontSize: 66,
-                          fontWeight: FontWeight.bold),
-                    )
                   ],
                 ));
 

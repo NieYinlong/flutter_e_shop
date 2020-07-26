@@ -39,3 +39,54 @@ getHomePageData() async {
     return print('NYL_ERROR =======> : $e');
   }
 }
+
+Future getHotSaleData() async {
+  print('请求地址 ==> : ${servicePath['hotSale']}');
+  try{
+    Dio dio = new Dio();
+    Response rsp = await dio.get(servicePath['hotSale']);
+    if(rsp.statusCode == 200) {
+      return rsp.data;
+    } else {
+      throw Exception('接口异常');
+    }
+
+  } catch(e) {
+
+    return print('NYL_ERROR =======> : $e');
+  }
+}
+
+Future requestGET(url, param) async {
+  print('请求地址 ==> : ${servicePath['hotSale']}');
+  try{
+    Dio dio = new Dio();
+    Response rsp = await dio.get(url, queryParameters: param);
+    if(rsp.statusCode == 200) {
+      return rsp.data;
+    } else {
+      throw Exception('接口异常');
+    }
+
+  } catch(e) {
+
+    return print('NYL_ERROR =======> : $e');
+  }
+}
+
+Future requestPOST(url, param) async {
+  print('请求地址 ==> : ${servicePath['hotSale']}');
+  try{
+    Dio dio = new Dio();
+    Response rsp = await dio.post(url, queryParameters: param);
+    if(rsp.statusCode == 200) {
+      return rsp.data;
+    } else {
+      throw Exception('接口异常');
+    }
+
+  } catch(e) {
+
+    return print('NYL_ERROR =======> : $e');
+  }
+}

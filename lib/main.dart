@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
         title: '百姓',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Colors.pink,
+          primaryColor: Colors.orangeAccent,
         ),
         home: IndexPage(),
       ),
