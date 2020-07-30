@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import '../../config/service_method.dart';
+import '../../config/service_url.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import './home_recommend.dart' show Recommend;
 import './home_goodsList.dart' show HotSaleGoodsList;
@@ -10,7 +11,7 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-// with AutomaticKeepAliveClientMixin
+// with AutomaticKeepAliveClientMixin 
 class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   @override
   bool get wantKeepAlive => true;
@@ -20,7 +21,8 @@ class _HomePageState extends State<HomePage> with AutomaticKeepAliveClientMixin 
     return Scaffold(
         appBar: AppBar(title: Text('首页')),
         body: FutureBuilder(
-          future: getHomePageData(),
+          //future: getHomePageData(),
+          future: requestGET(API.HOME_DATA, null),
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:

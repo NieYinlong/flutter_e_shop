@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import  './pages/index_page.dart';
+import './consts.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,10 +9,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: MaterialApp(
-        title: '百姓',
+        title: '聂银龙',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primaryColor: Colors.orangeAccent,
+          primaryColor: AppColors.ThemeColor
         ),
         home: IndexPage(),
       ),

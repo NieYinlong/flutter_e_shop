@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_e_shop/consts.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Recommend extends StatelessWidget {
@@ -23,7 +24,7 @@ class Recommend extends StatelessWidget {
       ),
       child: Text(
         '推荐',
-        style: TextStyle(color: Colors.orangeAccent),
+        style: TextStyle(color: AppColors.ThemeColor),
       ),
     );
   }
@@ -32,9 +33,6 @@ class Recommend extends StatelessWidget {
   Widget _oneItem (index) {
     
     var model = recommendList[index];
-
-    print('😁' + model['img']);
-
     print(recommendList);
     return InkWell(
       onTap: (){print('object');},
