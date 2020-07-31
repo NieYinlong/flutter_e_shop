@@ -10,7 +10,6 @@ class Recommend extends StatelessWidget {
   Recommend({Key key, this.recommendList}) : super(key: key);
 
   
-
 // 推荐标题
   Widget _titleView() {
     print('打击哈');
@@ -31,18 +30,17 @@ class Recommend extends StatelessWidget {
 
 // 列表中的一个item
   Widget _oneItem (index) {
-    
     var model = recommendList[index];
     print(recommendList);
     return InkWell(
       onTap: (){print('object');},
       child: Container(
-        // height: ScreenUtil().setHeight(330),
         width: ScreenUtil().setWidth(250),
         padding: EdgeInsets.all(6),
         decoration: BoxDecoration(
           border: Border( 
-            // right: BorderSide(color: Colors.black26, width: 0.4)
+            right: BorderSide(color: Colors.black26, width: 0.4),
+            // bottom: BorderSide(color: Colors.redAccent, width: 0.4)
           )
         ),
         child: Column(
@@ -69,7 +67,7 @@ class Recommend extends StatelessWidget {
 // 横向列表
   Widget _listWidget() {
     return Container(
-      height: ScreenUtil().setHeight(280),
+      height: ScreenUtil().setHeight(290),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: recommendList.length,
