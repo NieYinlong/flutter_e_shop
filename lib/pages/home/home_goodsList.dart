@@ -90,7 +90,7 @@ class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
     return Wrap(
       // spacing: 10, // 间隔
       children: listWidg,
-    );
+    );    
   }
 
   @override
