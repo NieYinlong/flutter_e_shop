@@ -1,34 +1,39 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_e_shop/config/service_method.dart';
+// import 'package:flutter_e_shop/config/service_method.dart';
 import 'package:flutter_e_shop/consts.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-import '../../config/service_url.dart';
+// import '../../config/service_url.dart';
 
 class HotSaleGoodsList extends StatefulWidget {
+
+HotSaleGoodsList({Key key, this.goodsList}) : super(key: key);
+  final List goodsList;
+
   @override
   _HotSaleGoodsListState createState() => _HotSaleGoodsListState();
 }
 
 class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
   
-  int page = 1;
-  List goodsList = [];
+  // int page = 1;
+  // List goodsList = widget.list;
 
-  @override
-  void initState() {
-    super.initState();
-    requestHotSale();
-  }
 
-  void requestHotSale() {
-    requestGET(API.HOT_SALE, null).then((value) {
-      List list = value['data']['items'];
-      setState(() {
-        goodsList.addAll(list);
-        page++;
-      });
-    });
-  }
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   requestHotSale();
+  // }
+
+  // void requestHotSale() {
+  //   requestGET(API.HOT_SALE, null).then((value) {
+  //     List list = value['data']['items'];
+  //     setState(() {
+  //       goodsList.addAll(list);
+  //       page++;
+  //     });
+  //   });
+  // }
 
   Widget _hotSaleTitle = Container(
       width: ScreenUtil.screenWidth,
@@ -57,7 +62,10 @@ class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
   //   );
   // }
 
-  Widget _wrapList() {
+  Widget _wrapList(list) {
+    
+    List goodsList = list;
+
     if(goodsList.length == 0) {
       return Container(child: Text('暂无数据'));
     }
@@ -96,7 +104,7 @@ class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
     return Column(
       children: <Widget>[
         _hotSaleTitle,
-        _wrapList(),
+        _wrapList(widget.goodsList),
         // _listWidget(),
       ],
     );
