@@ -25,10 +25,13 @@ dependencies:
   cupertino_icons: ^0.1.2
 
   #  dio网络请求库
-  #  flutter_swiper 轮播组件库
   dio: ^3.0.9
+  #  flutter_swiper 轮播组件库
   flutter_swiper: ^1.1.6
+  #  屏幕适配
   flutter_screenutil: ^2.1.0
+  # 下拉加载
+  flutter_easyrefresh: ^2.1.4
 
 
 dev_dependencies:

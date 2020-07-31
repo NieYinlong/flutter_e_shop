@@ -63,7 +63,6 @@ class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
     }
 
     List<Widget> listWidg = goodsList.map((e) {
-      
       print('WIDTH = ${ScreenUtil().setWidth(1080)}');
       return InkWell(
         onTap: (){},
@@ -88,7 +87,6 @@ class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
     }).toList();
 
     return Wrap(
-      // spacing: 10, // 间隔
       children: listWidg,
     );    
   }
