@@ -26,11 +26,16 @@ class _HomePageState extends State<HomePage>
   bool get wantKeepAlive => true;
   int _page = 1;
   List _hotSaleGoodsList = [];
+  EasyRefreshController _easyRefreshController;
+
+  var _getHomeData;// requestGET(API.HOME_DATA, null); // 赋值给变量防止futureBuilder重绘
 
   @override
   void initState() { // 页面声明周期只执行一次
     super.initState();
     print('😁😁😁😁');
+    _easyRefreshController = EasyRefreshController();
+    _getHomeData = requestGET(API.HOME_DATA, null);
     loadNewData();
   }
 
@@ -49,7 +54,7 @@ class _HomePageState extends State<HomePage>
     requestGET(API.HOT_SALE, {"page": _page}).then((value){
       setState(() {
         if(_page == 1) {
-          _hotSaleGoodsList = [];
+          _hotSaleGoodsList = []; // 清空数组
         }
         _hotSaleGoodsList.addAll(value['data']['items']);  
         print('_hotSaleGoodsList=' + _hotSaleGoodsList.toString());
@@ -62,7 +67,7 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
         appBar: AppBar(title: Text('首页')),
         body: FutureBuilder(
-          future: requestGET(API.HOME_DATA, null),
+          future: _getHomeData,
           builder: (BuildContext context, AsyncSnapshot snapshot) {
             switch (snapshot.connectionState) {
               case ConnectionState.none:
