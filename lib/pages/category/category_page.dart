@@ -16,26 +16,31 @@ class CategoryPage extends StatefulWidget {
 }
 
 class _CategoryPageState extends State<CategoryPage> {
+
+  CategoryListModel modelList;
+
   @override
   void initState() {
     super.initState();
-    // test();
+    test();
   }
 
-  // test() {
+  test() {
       
-  //   requestGET(API.CATEGORY, null).then((value) {
-  //     CategoryListModel list = CategoryListModel.fromJson(value['data']);
-      
-  //     list.data.forEach((item) {
-  //       print(item.categoryName);
-  //     });
+    requestGET(API.CATEGORY, null).then((value) {
+      CategoryListModel list = CategoryListModel.fromJson(value['data']);
+      setState(() {
+        modelList = list;
+      });
+      // list.data.forEach((item) {
+      //   print(item.categoryName);
+      // });
 
-  //     MyModel model = MyModel.fromJson2(value['data'][0]);
-  //     print('------');
-  //     print(model.categoryName);
-  //   });
-  // }
+      // MyModel model = MyModel.fromJson2(value['data'][0]);
+      // print('------');
+      // print(model.categoryName);
+    });
+  }
 
 
   @override
@@ -48,7 +53,7 @@ class _CategoryPageState extends State<CategoryPage> {
       body: Container(
         child: Row(
           children: <Widget>[
-            LeftNav(),
+            LeftNav(categoryList: ,),
             RightContent(),
           ]
         )
