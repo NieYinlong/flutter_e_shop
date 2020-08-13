@@ -3,12 +3,12 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import '../config/service_url.dart';
 import '../config/service_method.dart';
 
-class CategoryPage extends StatefulWidget {
+class TestPage extends StatefulWidget {
   @override
-  _CategoryPageState createState() => _CategoryPageState();
+  _TestPageState createState() => _TestPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _TestPageState extends State<TestPage> {
   List list = [];
   int page = 1;
   EasyRefreshController _controller;
@@ -56,10 +56,11 @@ class _CategoryPageState extends State<CategoryPage> {
     });
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('分类')),
+      appBar: AppBar(title: Text('测试页')),
       body: Center(
         child: 
         
@@ -105,5 +106,3 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }
 }
-
-\

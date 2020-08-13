@@ -14,5 +14,6 @@ class API {
   static const HOME_BANNER = '$baseUrl/home_banner';
   static const HOME_DATA = '$baseUrl/homeData';
   static const HOT_SALE = '$baseUrl/hotSale';
+  static const CATEGORY = '$baseUrl/category';
 }
 

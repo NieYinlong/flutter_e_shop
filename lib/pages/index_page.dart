@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart'; // iOS风格的组件
 import './home/home_page.dart';
-import './category_page.dart';
+import './category/category_page.dart';
 import './cart_page.dart';
 import './member_page.dart';
+import './test_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../config/service_method.dart';
 import '../config/service_url.dart';
@@ -32,6 +33,11 @@ class _IndexPageState extends State<IndexPage> {
         icon: Icon(CupertinoIcons.profile_circled),
         title: Text('会员中心')
     ),
+
+     BottomNavigationBarItem(
+        icon: Icon(CupertinoIcons.play_arrow_solid),
+        title: Text('测试页')
+    ),
   ];
 
   final List<Widget> _tabBodies = [
@@ -39,6 +45,7 @@ class _IndexPageState extends State<IndexPage> {
       CategoryPage(),
       CartPage(),
       MemberPage(),
+      TestPage()
   ];
 
   int _currentIndex = 0; // 当前索引

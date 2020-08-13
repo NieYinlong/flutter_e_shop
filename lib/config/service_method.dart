@@ -44,7 +44,7 @@ Future request(String url, param, HTTPMethod medhod) async
       rsp = await dio.delete(url, queryParameters: param);
     }
     if(rsp.statusCode == 200) {
-      print('${url}url result=${rsp}');
+      print('${url} result=${rsp}');
       return rsp.data;
     } else {
       throw Exception('接口异常');
