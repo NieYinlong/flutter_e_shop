@@ -5,8 +5,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LeftNav extends StatefulWidget {
 
-  LeftNav({Key key, this.categoryList}) : super(key: key);
-  final CategoryListModel categoryList;
+  LeftNav({Key key, this.list}) : super(key: key);
+  final List <CategoryModel>list;
 
   @override
   _LeftNavState createState() => _LeftNavState();
@@ -21,9 +21,9 @@ class _LeftNavState extends State<LeftNav> {
       //   border: Border.all(color: Colors.red, width: 1)
       // ),
       child: ListView.builder(
-        itemCount: widget.categoryList.data.length,
+        itemCount: widget.list.length,
         itemBuilder: (context, index) {
-          var item = widget.categoryList.data[index];
+          var item = widget.list[index];
           return _itemCell(item, index);
         }
       )

@@ -17,35 +17,41 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage> {
 
-  CategoryListModel modelList;
+  List <CategoryModel> _leftList = [];
 
   @override
   void initState() {
     super.initState();
-    test();
+    reqList();
   }
 
-  test() {
+  reqList() {
       
     requestGET(API.CATEGORY, null).then((value) {
-      CategoryListModel list = CategoryListModel.fromJson(value['data']);
-      setState(() {
-        modelList = list;
-      });
-      // list.data.forEach((item) {
-      //   print(item.categoryName);
-      // });
+  
+        // 方法1, 把model添加到数组
+        List dataArr = value['data'];
+        List <CategoryModel> tmpList= [];
+        dataArr.forEach((e) => {
+          tmpList.add(CategoryModel.fromJson(e))
+        });
 
-      // MyModel model = MyModel.fromJson2(value['data'][0]);
-      // print('------');
-      // print(model.categoryName);
-    });
+        // 方法2 封装: 把list 封装到一个model, 取出.list即可
+        CategoryListModel listModel = CategoryListModel.fromJson(value['data']);
+
+        setState(() {
+          // 方法 1 的赋值
+          //_leftList = tmpList;
+          // 方法 2 的赋值
+          _leftList = listModel.list;
+        });
+
+      });
   }
 
 
   @override
   Widget build(BuildContext context) {
-    // test();
     return Scaffold(
       appBar: AppBar(
         title: Text('商品分类', style: TextStyle(fontSize: ScreenUtil().setHeight(24)),),
@@ -53,7 +59,7 @@ class _CategoryPageState extends State<CategoryPage> {
       body: Container(
         child: Row(
           children: <Widget>[
-            LeftNav(categoryList: ,),
+            LeftNav(list: _leftList),
             RightContent(),
           ]
         )
@@ -61,16 +67,3 @@ class _CategoryPageState extends State<CategoryPage> {
     );
   }    
 }
-
-
-// class Rectangle {
-//   num left, top, width, height;
-
-//   Rectangle(this.left, this.top, this.width, this.height);
-
-//   // 定义两个计算属性： right 和 bottom。
-//   num get right => left + width;
-//   set right(num value) => left = value - width;
-//   num get bottom => top + height;
-//   set bottom(num value) => top = value - height;
-// }
