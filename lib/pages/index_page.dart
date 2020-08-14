@@ -16,9 +16,12 @@ class IndexPage extends StatefulWidget {
 }
 
 class _IndexPageState extends State<IndexPage> {
+
+
   final List<BottomNavigationBarItem> bottomTabs = [
     BottomNavigationBarItem(
-      icon: Icon(CupertinoIcons.home),
+      icon: Image.asset('assets/images/tab_home_gray.png', width: 25,),
+      activeIcon: Image.asset('assets/images/tab_home_colorful.png', width: 25,),
       title: Text('首页')
     ),
     BottomNavigationBarItem(
@@ -36,9 +39,11 @@ class _IndexPageState extends State<IndexPage> {
 
      BottomNavigationBarItem(
         icon: Icon(CupertinoIcons.play_arrow_solid),
+        activeIcon: Image.asset('assets/images/tab_other_colorful.png', width: 25,),
         title: Text('测试页')
     ),
-  ];
+  ];   
+
 
   final List<Widget> _tabBodies = [
       HomePage(),
