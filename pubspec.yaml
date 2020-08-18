@@ -32,7 +32,8 @@ dependencies:
   flutter_screenutil: ^2.1.0
   # 下拉加载
   flutter_easyrefresh: ^2.1.4
-
+  # flutter状态管理
+  provide: ^1.0.2
 
 dev_dependencies:
   flutter_test:
