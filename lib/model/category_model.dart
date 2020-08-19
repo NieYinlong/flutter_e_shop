@@ -7,13 +7,25 @@ class CategoryModel {
   int categoryId;
   String categoryName;
   String image;
+  List<SubTypeModel> subTypes;
 
-  CategoryModel({this.categoryId, this.categoryName, this.image});
+  CategoryModel({
+    this.categoryId, 
+    this.categoryName, 
+    this.image,
+    this.subTypes
+  });
 
   CategoryModel.fromJson(Map<String, dynamic> json) {
     categoryId = json['categoryId'];
     categoryName = json['categoryName'];
     image = json['image'];
+    if (json['subTypes'] != null) {
+      subTypes = new List<SubTypeModel>();
+      json['subTypes'].forEach((v) {
+        subTypes.add(new SubTypeModel.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -21,6 +33,22 @@ class CategoryModel {
     data['categoryId'] = this.categoryId;
     data['categoryName'] = this.categoryName;
     data['image'] = this.image;
+    return data;
+  }
+}
+
+class SubTypeModel {
+  String subName;
+
+  SubTypeModel({this.subName});
+
+  SubTypeModel.fromJson(Map<String, dynamic> json) {
+    subName = json['subName'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['subName'] = this.subName;
     return data;
   }
 }

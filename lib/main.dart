@@ -3,6 +3,7 @@ import  './pages/index_page.dart';
 import './consts.dart';
 import 'package:provide/provide.dart';
 import './provide/counter.dart';
+import './provide/sub_category.dart';
 
 // void main() {
 //   runApp(MyApp());
@@ -10,10 +11,11 @@ import './provide/counter.dart';
 
 void main() {
   var counter = Counter();
+  var subCategory = SubCategory();
   var providers = Providers();
   providers
-  ..provide(Provider<Counter>.value(counter));
-  // ..provide(Provider<Counter>.value(counter)); // 其他的
+  ..provide(Provider<Counter>.value(counter))
+  ..provide(Provider<SubCategory>.value(subCategory));
   runApp(ProviderNode(child: MyApp(), providers: providers));
 }
 

@@ -60,7 +60,7 @@ class _CategoryPageState extends State<CategoryPage> {
         child: Row(
           children: <Widget>[
             LeftNav(list: _leftList),
-            RightContent(),
+            Flexible(child: RightContent())
           ]
         )
       ),

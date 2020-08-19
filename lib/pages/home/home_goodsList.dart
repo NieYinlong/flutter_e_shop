@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter_e_shop/config/service_method.dart';
 import 'package:flutter_e_shop/consts.dart';
 import 'package:flutter_screenutil/screenutil.dart';
-// import '../../config/service_url.dart';
 
 class HotSaleGoodsList extends StatefulWidget {
 
@@ -15,52 +13,14 @@ HotSaleGoodsList({Key key, this.goodsList}) : super(key: key);
 
 class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
   
-  // int page = 1;
-  // List goodsList = widget.list;
-
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   requestHotSale();
-  // }
-
-  // void requestHotSale() {
-  //   requestGET(API.HOT_SALE, null).then((value) {
-  //     List list = value['data']['items'];
-  //     setState(() {
-  //       goodsList.addAll(list);
-  //       page++;
-  //     });
-  //   });
-  // }
 
   Widget _hotSaleTitle = Container(
       width: ScreenUtil.screenWidth,
-      color: Color(0xFFCBCBCB),
+      color: AppColors.BgGrayColor,
       padding: EdgeInsets.only(top: 8, bottom: 8),
       child: Text('热卖', textAlign: TextAlign.center, style: TextStyle(color: AppColors.ThemeColor, fontSize: ScreenUtil().setSp(36)),),
   );
 
-
-  // Widget _listWidget() {
-  //   Widget content;
-
-  //   List<Widget> list = [];
-  //   for (var item in goodsList) {
-  //     list.add(Image.network(
-  //       item['img'],
-  //       width: ScreenUtil.screenWidth / 2.5,
-  //     ));
-  //   }
-
-  //   content = Column(children: list);
-
-  //   return Wrap(
-  //     spacing: 2,
-  //     children: list,
-  //   );
-  // }
 
   Widget _wrapList(list) {
     
@@ -76,7 +36,6 @@ class _HotSaleGoodsListState extends State<HotSaleGoodsList> {
         onTap: (){},
         child: Container(
           width: ScreenUtil.screenWidth / 2,
-          // color: Colors.yellowAccent,
           padding: EdgeInsets.all(5),
           margin: EdgeInsets.only(bottom: 3),
           child: Column(
