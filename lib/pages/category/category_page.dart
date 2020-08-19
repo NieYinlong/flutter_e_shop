@@ -4,8 +4,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_e_shop/config/service_method.dart';
 import 'package:flutter_e_shop/config/service_url.dart';
+import 'package:flutter_e_shop/provide/sub_category.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provide/provide.dart';
 import '../../model/category_model.dart';
 import './widgets/category_left_nav.dart' show LeftNav;
 import './widgets/category_right_content.dart' show RightContent;
@@ -45,6 +47,8 @@ class _CategoryPageState extends State<CategoryPage> {
           // 方法 2 的赋值
           _leftList = listModel.list;
         });
+        // 默认选中第0项
+        Provide.value<SubCategory>(context).getSubCategory(listModel.list[0].subTypes);
 
       });
   }

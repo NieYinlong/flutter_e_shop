@@ -7,8 +7,8 @@ import '../../../provide/sub_category.dart';
 
 class LeftNav extends StatefulWidget {
 
-  LeftNav({Key key, this.list}) : super(key: key);
   final List <CategoryModel>list;
+  LeftNav({Key key, this.list}) : super(key: key);
 
   @override
   _LeftNavState createState() => _LeftNavState();
@@ -16,10 +16,11 @@ class LeftNav extends StatefulWidget {
 
 class _LeftNavState extends State<LeftNav> {
 
-@override
-void initState() { 
-  super.initState();
-}
+  var currentClickIndex = 0;
+  @override
+  void initState() { 
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,14 +44,17 @@ void initState() {
       onTap: () {
          var subList = widget.list[index].subTypes;
          Provide.value<SubCategory>(context).getSubCategory(subList);
+         setState(() {
+           currentClickIndex = index;
+         });
       },
       child: Container(
         height: ScreenUtil().setWidth(100),
         padding: EdgeInsets.only(left: 10, top:20),
         decoration: BoxDecoration(
-          color: index == 1 ? Colors.white : AppColors.BgGrayColor,
+          color: index == currentClickIndex ? Colors.white : AppColors.BgGrayColor,
           // border: Border(
-          //   bottom: BorderSide(width: 1, color: Colors.black12)
+          //   bottom: BorderSide(width: 1, color: Colors.red)
           // )
         ),
         child: Text(item.categoryName),
