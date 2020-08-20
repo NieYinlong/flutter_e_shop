@@ -45,6 +45,7 @@ class SubCategoryModel {
 
   SubCategoryModel.fromJson(Map<String, dynamic> json) {
     subName = json['subName'];
+    subId = json['subId'];
   }
 
   Map<String, dynamic> toJson() {
