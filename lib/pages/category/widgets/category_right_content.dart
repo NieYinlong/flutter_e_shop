@@ -12,7 +12,7 @@ class RightContent extends StatefulWidget {
 
 class _RightContentState extends State<RightContent> {
   
-  List _goodsList = ['运动鞋', '跑步鞋', '足球鞋'];
+  List _goodsList = ['运动鞋', '跑步鞋', '足球鞋','运动鞋', '跑步鞋', '足球鞋'];
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class _RightContentState extends State<RightContent> {
       child: Column(
         children: [
           _topSubStype(),
-          Expanded(child: _bottomListView())
+          _bottomListView()
         ]
       ),
     );
@@ -47,10 +47,9 @@ class _RightContentState extends State<RightContent> {
     );
       },
     );
-    // return 
   }
 
-  Widget _topSubStypeItem(SubTypeModel subModel) {
+  Widget _topSubStypeItem(SubCategoryModel subModel) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.only(left: 20, right: 20),
@@ -58,32 +57,28 @@ class _RightContentState extends State<RightContent> {
     );
   }
 
+
   // Widget _bottomListView() {
-  //   return GridView(
-  //     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-  //       crossAxisCount: 2,
-  //       crossAxisSpacing: 2,
-  //       mainAxisSpacing: 2
-  //     ),
-  //     children: <Widget>[
-  //       _bottomListViewItem('1'),
-  //       _bottomListViewItem('2'),
-  //       _bottomListViewItem('3'),
-  //     ],
+  //   return GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+  //     crossAxisCount: 2,
+  //     mainAxisSpacing: 2,
+  //     crossAxisSpacing: 2,
+  //   ),
+  //   itemCount: _goodsList.length,
+  //    itemBuilder: (context, index) {
+  //      return _bottomListViewItem(_goodsList[index]);
+  //    }
   //   );
   // }
 
-
-  Widget _bottomListView() {
-    return GridView.builder(gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
-      mainAxisSpacing: 2,
-      crossAxisSpacing: 2,
-    ),
-    itemCount: _goodsList.length,
-     itemBuilder: (context, index) {
-       return _bottomListViewItem(_goodsList[index]);
-     }
+   Widget _bottomListView() {
+    return Expanded(
+      child: Container(child: ListView.builder(
+        itemCount: _goodsList.length,
+        itemBuilder: (context, index) {
+          return _bottomListViewItem(_goodsList[index]);
+        }
+      ),)
     );
   }
 

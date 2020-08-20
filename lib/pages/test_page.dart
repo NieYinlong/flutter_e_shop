@@ -63,7 +63,6 @@ class _TestPageState extends State<TestPage> {
       appBar: AppBar(title: Text('测试页')),
       body: Center(
         child: 
-        
         EasyRefresh.custom(
           enableControlFinishLoad: true,
           enableControlFinishRefresh: true,
@@ -106,3 +105,58 @@ class _TestPageState extends State<TestPage> {
     );
   }
 }
+
+
+// 子组件向父组件传值 start
+class ParentView extends StatefulWidget {
+  @override
+  _ParentState createState() => _ParentState();
+}
+
+class _ParentState extends State<ParentView> {
+
+  Color _myColor = Colors.grey;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(80),
+      height: 300,
+      width: 300,
+      color: _myColor,
+      child: Column(
+        children: <Widget>[
+          Text('父类'),
+          ChildView(changeColorCallBack: (color) {
+            setState(() {
+              _myColor = color;
+            });
+          },)
+        ],
+      )
+    );
+  }
+}
+
+class ChildView extends StatelessWidget {
+
+  ChildView({this.changeColorCallBack});
+  final ValueChanged<Color> changeColorCallBack;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 130,
+      height: 40,
+      margin: EdgeInsets.all(80),
+      color: Colors.greenAccent,
+      child: InkWell( 
+        child: Text('把父类改为红色'),
+        onTap: () {
+          changeColorCallBack(Colors.red);
+        },
+      ),
+    );
+  }
+}
+// 子组件向父组件传值 end

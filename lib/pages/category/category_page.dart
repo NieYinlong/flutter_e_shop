@@ -21,21 +21,23 @@ class _CategoryPageState extends State<CategoryPage> {
 
   List <CategoryModel> _leftList = [];
 
+  int _bigCategoryId = 0;
+  int _subCategoryId = 0;
+
   @override
   void initState() {
     super.initState();
-    reqList();
+    reqLeftCategoryList();
   }
 
-  reqList() {
-      
+  reqLeftCategoryList() {
     requestGET(API.CATEGORY, null).then((value) {
   
         // 方法1, 把model添加到数组
         List dataArr = value['data'];
         List <CategoryModel> tmpList= [];
-        dataArr.forEach((e) => {
-          tmpList.add(CategoryModel.fromJson(e))
+        dataArr.forEach((e){
+          tmpList.add(CategoryModel.fromJson(e));
         });
 
         // 方法2 封装: 把list 封装到一个model, 取出.list即可
@@ -54,20 +56,37 @@ class _CategoryPageState extends State<CategoryPage> {
   }
 
 
+  reqForRightGoodsList () {
+    var parma = {
+      "categoryId" : _bigCategoryId,
+      "subCategoryId" : _subCategoryId,
+    };
+    print('parma = $parma');
+    requestGET(API.HOT_SALE, parma).then((value) {
+      print(value);
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('商品分类', style: TextStyle(fontSize: ScreenUtil().setHeight(24)),),
       ),
-      body: Container(
-        child: Row(
+      body:Row (
           children: <Widget>[
-            LeftNav(list: _leftList),
+            LeftNav(
+              list: _leftList,
+              selectCategoryCallBack: (value) {
+                _bigCategoryId = value;
+                print(_bigCategoryId);
+                reqForRightGoodsList();
+              },
+            ),
             Flexible(child: RightContent())
           ]
-        )
-      ),
+      )
     );
   }    
 }

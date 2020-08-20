@@ -3,12 +3,12 @@ import '../model/category_model.dart';
 
 class SubCategory with ChangeNotifier {
   
-  List<SubTypeModel> subCategoryList = [];
+  List<SubCategoryModel> subCategoryList = [];
 
-  getSubCategory(List<SubTypeModel> list) {
+  getSubCategory(List<SubCategoryModel> list) {
 
     // 自定义一个全部
-    SubTypeModel allModel = SubTypeModel();
+    SubCategoryModel allModel = SubCategoryModel();
     allModel.subName = '全部';
     subCategoryList = [allModel];
     subCategoryList.addAll(list);

@@ -7,8 +7,16 @@ import '../../../provide/sub_category.dart';
 
 class LeftNav extends StatefulWidget {
 
+  
+  LeftNav({
+    Key key, 
+    this.list,
+    this.selectCategoryCallBack
+  }) 
+    : super(key: key);
+  
   final List <CategoryModel>list;
-  LeftNav({Key key, this.list}) : super(key: key);
+  final ValueChanged<int> selectCategoryCallBack;
 
   @override
   _LeftNavState createState() => _LeftNavState();
@@ -47,6 +55,7 @@ class _LeftNavState extends State<LeftNav> {
          setState(() {
            currentClickIndex = index;
          });
+         widget.selectCategoryCallBack(widget.list[index].categoryId); // 回调给父组件
       },
       child: Container(
         height: ScreenUtil().setWidth(100),
@@ -61,5 +70,8 @@ class _LeftNavState extends State<LeftNav> {
       )
     );
   }
-
 }
+
+
+
+
